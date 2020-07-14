@@ -1,0 +1,14 @@
+// 再帰呼び出し（この例では末尾呼び出しも）を使った階乗表示プログラム
+fun main(args: Array<String>) {
+    var threeRange = sum((1L..3).toList())	// 3の階乗
+    var fiveRange = sum((1L..5).toList())	// 5の階乗
+    var tenRange = sum((1L..10).toList())	// 10の階乗
+
+    println("Factorial of 3: $threeRange")	// 3の階乗を表示
+    println("Factorial of 5: $fiveRange")	// 5の階乗を表示
+    println("Factorial of 10: $tenRange")	// 10の階乗を表示
+}
+
+tailrec fun sum(numbers: List<Long>, valueHolder: Long = 1): Long =
+    if (numbers.isEmpty()) valueHolder
+    else sum(numbers.drop(1), valueHolder * numbers.first())
